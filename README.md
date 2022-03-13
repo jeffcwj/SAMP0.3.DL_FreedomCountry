@@ -13,6 +13,6 @@ There are also mini-game battle royale, team battles, individual battles, dm, et
 #### Official Server
 `fc.samp.fun`
 
-#### QQ Group
-`920702479`
+#### Join
+`920702479(QQGroup)`
 
