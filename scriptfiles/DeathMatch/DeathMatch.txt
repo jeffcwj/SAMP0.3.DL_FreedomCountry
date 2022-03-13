@@ -1,0 +1,6 @@
+//weapon 武器id (添加武器,最多5把)
+//spawn x y z a (添加出生点,最多10个)
+//hp 血量 (添加血量,只有一个)
+//addmap 地图名 (添加DM地图)
+addmap DesertEagle
+addmap WarShip

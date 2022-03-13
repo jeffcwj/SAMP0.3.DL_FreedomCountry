@@ -1,0 +1,12 @@
+//MAX_REMOVEOBJ 超过1000貌似会蹦
+//obj objid x y z rx ry rz range (添加obj)
+//3dtext string x y z (* = 换行,_ = 空格) 添加3dtext
+//removeobj modelid x y z range 300.0 添加删除obj
+//material index modelid txdname texturenam color (添加纹理)
+//materialtext index text size fontface bold fontcolor backcolor alignment (添加纹理文本)
+//moveobj x y z speed rx ry rz range 组织ID 使用等级 (添加移动obj)
+//teleport ox oy oz ointerior text ix iy iz iinterior text
+//addtxt 文档名
+addtxt yyk
+addtxt lvsk
+addtxt UTOPIA

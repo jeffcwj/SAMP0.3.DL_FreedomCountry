@@ -1,0 +1,50 @@
+mk_strlen(str[]) - 计算str的长度,支持中文
+mk_strcmp(str1[],str2[],ignorecase,length) - 比较str与str2,支持中文
+mk_strfind(str[],sub[],ignorecase,pos) - 在str里找sub,支持中文
+LoadConfig() - 读取P-House的配置
+DebugMsg(msg,....) - 显示一条debug消息在服务端(如果debug开启)
+Installation(txt[]) - 安装(导入)txt文档的数据,不需要后缀名
+AddObj(str[],txt[],dbid) - 添加一个obj,str为他的数据,txt为他的文档,dbid为他的数据库id
+UnInstallation(txt[]) - 卸载(从数据库中删除)house文档,不需要后缀名
+IsTxtInstallation(txt[]) - 查询txt文档是否被安装,返回0表示无,非0表示有
+GetTxtInstallationId(txt[]) - 获取文档的安装id
+LoadTxt(txt[]) - 加载某文档
+IsLoadTxt(txt[]) - 判断某文档是否被加载,返回-1表示无,返回其他值为该文档的id
+RedObj(index) - 删除index位置的obj,index为p_Obj数组中的索引
+GetLoadTxt() - 显示所有已被加载的文档
+LoadAllTxt() - 加载所有已安装文档
+UnLoadAllTxt() - 卸载所有已加载文档
+AddSell(txt[],value[],dbid) - 添加一个sell,txt为他的文档,value为他的数据,dbid为他的数据库id
+RedSell(index) - 删除index位置的sell,index为p_Sell数组中的索引
+GetPlayerInSell(playerid) - 获取playerid在哪个sell范围内,返回-1为不在任何的sell范围内,非负为sellindex
+UpDataSellPickup(index) - 更新sell[index]的牌子和3DT
+GetSellPlayer(txt[])-查询文档中的所有者(如果有sell则必有所有者)
+RedAllObj(txt[]) - 删除txt文档的所有普通obj
+RedAllSell(txt[]) - 删除txt文档的所有sell
+BuySell(playerid,index) - 玩家playerid购买index索引的房子
+ChangeSellPlayer(index,newplayer[]) - 更新index索引的房子的所有者
+SellSell(playerid,index) - 玩家playerid出售index索引的房子
+GetPlayerAclFromTxt(player[],txt[]) - 获取player是否拥有操作txt的权限
+AddPlayerToTxt(player[],txt[]) - 添加player权限至txt
+AddChangeObj(txt[],value[],dbid) - 添加一个替换类的obj,txt为文档,value为数据,dbid为id
+RedChangeObj(index) - 删除一个替换类obj
+RedAllChangeObj(txt[]) - 删除指定文档的所有替换类OBJ
+ShowChangeObj(index) - 显示一个替换类obj
+ReLoadConfig() - 重新加载配置文件,会执行一次unloadall,在配置加载完毕后执行loadall
+GetSellName(txt,txtname[]) - 查询文档中的姓名(如果有sell则必有姓名)
+ChangeSellName(index,newname[]) - 修改文档的姓名
+AddMoveObj(txt[],value[],dbid) - 添加一个移动类obj
+RedMoveObj(index) - 删除一个移动类obj
+RedAllMoveObj(txt[])-删除指定文档的所有移动类obj
+MoveMoveObj(index) - 移动一个移动类obj
+MoveMoveObjed(index) - 某一个移动类obj完成了移动
+UseMoveObj(playerid) - 某玩家移动周围的移动类obj
+GotoSell(playerid,index) - 移动到指定sell
+GetSellMax() - 获取sell总数
+GetTxtPlayer(txt[]) - 获取指定文档的权限者总数
+GetPages(s) - 给定指定数量，返回页数
+ShowAclList(playerid,txt[]) - 显示给自己玩家txt文档的ACL列表
+
+
+PHouse_ChangePlayerNameToName(name[],toname[]) - 将所有文档内的,属于name的权限修改为toname
+//...CallRemoteFunction("PHouse_ChangePlayerNameToName","ss",改名前的名字,改名后的名字)

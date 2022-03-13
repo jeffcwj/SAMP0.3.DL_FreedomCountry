@@ -1,0 +1,94 @@
+服务端
+samp03x_svr_R2_win32
+
+INC
+samp03x_svr_R2_win32中的<a_samp> <streamer>,没有任何改动
+<mkstr> 
+
+插件
+streamer
+
+文件结构
+filterscripts\PHouse.amx
+filterscripts\PHouse.pwn
+pawno\include\a_samp.inc
+pawno\include\mkstr.inc
+pawno\include\streamer.inc
+scriptfiles\PHouse\config.cfg
+scriptfiles\PHouse\txt\
+scriptfiles\PHouse\house.db
+scriptfiles\PHouse\house(空).db
+
+管理员命令
+/houseedit ins <文档名> - 安装一个文档,文档需放置在scriptfiles\PHouse\txt下,后缀为.txt
+/houseedit unins <文档名> - 删除一个文档(从数据库),需要先卸载
+/houseedit load <文档名> - 加载一个文档(从数据库)
+/houseedit unload <文档名> - 卸载一个文档，将该文档的OBJ之类的全部删除,可以在用load加载
+/houseedit txtlist - 显示当前已加载的所有文档的信息(文档名、数据库ID、索引ID)
+/houseedit loadall - 加载所有已安装文档
+/houseedit unloadall  - 卸载所有已加载文档
+/houseedit reloadconfig - 重载配置,会卸载所有文档并重新加载所有文档
+/houseedit owner <文档名> <拥有者> - 给一个文档添加拥有者(系统 = 没有拥有者) add by Dylan
+
+玩家命令
+/house buy - 买房子
+/house sell - 卖房子
+/house text - 修改房子名字
+/house goto - 移动到指定房子
+按Y - 操作你附近的可操作obj
+按H- 移动你附近的可移动obj
+/house adp - 添加某人某房子的权限
+/house list - 查看指定房子的权限列表
+
+
+文档标记(.txt的内容)
+[]内的表示可选项,不填则采用配置中的值
+没[]的表示必选项,如果不填则会导致一些奇怪的问题...
+
+
+标记:obj
+功能:在指定坐标创建指定obj
+栗子:obj obj模型id x坐标 y坐标 z坐标 rx旋转 ry旋转 rz旋转 [dis绘制距离(不填则采用配置值Objdis)]
+
+标记:area
+功能:和sell功能类似, 连接家具系统使用, 在这个范围内只有有权限的人才可以编辑家具.
+栗子:area x y range
+标记:sell
+功能:每个文档中仅第一个能生效,在指定位置以指定价格创建该文档的购买标记,购买后的人可以管理该文档的权限
+栗子:sell 购买价格 x坐标 y坐标 z坐标 [dis绘制距离(不填则采用配置值Selldis)]
+
+标记://
+功能:注释,仅可用在一行的开头,如果在其他标记的参数中使用则没有效果..并且载入时会被当作0来处理\= =
+栗子://粒子!
+栗子:// 粒子!
+
+标记:changeobj
+功能:在指定坐标创建一个obj,该obj可以在2种模型之间切换
+栗子:changeobj 模型1 x y z rx ry rz 模型2 [初始模型(0或非0),不填为0] [指令操作范围(不填则采用值Changeobjcommandrange)] [绘制距离(不填则采用值Objdis)]
+
+标记:player
+功能:给指定玩家添加操作该文档的权限,玩家名如果用*号的话，则表示任意玩家都可以操作
+栗子:player ushio_p  < 给ushio_p添加操作该文档的权限   
+栗子:player * < 给任意玩家添加操作该文档的权限
+
+标记:allobj
+功能:在这一行之后每一行第一位如果没包含标记字符,则为其补充一个标记字符'obj',在大批量导入OBJ时可能有用,对于有标记的行没有影响
+栗子: allobj
+栗子: 19370  -692.76  939.61  13.52    0.00  0.00  0.00 
+结果:在安装时,脚本会自动补充为 obj  19370  -692.76  939.61  13.52    0.00  0.00  0.00 
+
+标记:allchangeobj
+功能:在这一行之后每一行第一位如果没包含标记字符,则为其补充一个标记字符'changeobj',在大批量导入替换类OBJ时可能有用,对于有标记的行没有影响
+栗子: allchangeobj
+栗子: 1502  -692.24  935.21  13.13    0.00  0.00  96.00 1506 0 3
+结果:在安装时,脚本会自动补充为 changeobj  1502  -692.24  935.21  13.13    0.00  0.00  96.00 1506 0 3
+
+标记:moveobj
+功能:在指定坐标创建一个obj,该obj可以在2个坐标之间移动
+栗子:moveobj 模型id x y z rx ry rz speed x1 y1 z1 rx1 ry1 rz1 speed1 [time(在移动完成后的指定时间后返回xyz的位置,如果为负数则不自动返回,不填为0),不填为0] [指令操作范围(不填则采用值Moveobjcommandrange)] [绘制距离(不填则采用值Objdis)] 
+
+标记:allmoveobj
+功能:在这一行之后每一行第一位如果没包含标记字符,则为其补充一个标记字符'moveobj',在大批量导入移动类OBJ时可能有用,对于有标记的行没有影响
+栗子:allmoveobj
+栗子:1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 10.5 5 300
+结果:moveobj 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 10.5 5 300
